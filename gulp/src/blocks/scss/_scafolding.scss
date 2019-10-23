@@ -1,0 +1,135 @@
+[data-whatintent='touch'],
+[data-whatintent='mouse'] {
+	*:focus {
+		outline: none;
+	}
+}
+* {
+  box-sizing: border-box;
+  //outline: none;
+	//	@extend %scrollbar;
+}
+
+*::before, *::after {
+  box-sizing: inherit;
+}
+
+html {
+	//touch-action: manipulation;
+}
+body {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	font-family: $default-font;
+	font-size: 16px;
+	line-height: 1.5;
+	color: $text-color;
+	overflow-x: hidden;
+	cursor: default;
+	@media (max-width: $mobile-big) {
+		font-size: 14px;
+	}
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol {
+  margin: 0;
+  &.no-style {
+    padding: 0;
+    list-style: none;
+  }
+}
+
+button {
+  border: none;
+	cursor: pointer;
+}
+
+img {
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+[contenteditable=true]:empty:before {
+  content: attr(data-placeholder);
+  color: #131313;
+  font-size: inherit;
+  display: block; /* For Firefox */
+}
+
+select {
+  appearance: none;
+  &::-ms-expand { // для IE
+    display: none;
+  }
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+blockquote {
+  margin: 0;
+}
+
+h3,h4,h5,h5 {
+	font-weight: bold;
+}
+h1 {
+  font-size: 42px;
+	line-height: 51px;
+	font-weight: 800;
+	@media (max-width: $mobile-big) {
+		font-size: 28px;
+		line-height: 34px;
+	}
+}
+h2 {
+	font-size: 42px;
+	line-height: 51px;
+	font-weight: 800;
+	@media (max-width: $mobile-big) {
+		font-size: 28px;
+		line-height: 34px;
+	}
+}
+h3 {
+	font-size: 28px;
+	line-height: 34px;
+	@media (max-width: $mobile-big) {
+		font-size: 22px;
+		line-height: 27px;
+	}
+}
+h4 {
+  font-size: 22px;
+	line-height: 27px;
+	@media (max-width: $mobile-big) {
+		font-size: 16px;
+		line-height: 25px;
+	}
+}
+
+.container {
+	max-width: 1340px;//1300
+	width: 100%;
+	margin: auto;
+	padding: 0 20px;
+	@media screen and (max-width: $mobile) {
+		padding: 0 10px;
+	}
+}

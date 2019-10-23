@@ -1,0 +1,29 @@
+@mixin transition($element: all, $time: .25s, $function: linear) {
+	transition: $time $function;
+	transition-property: #{$element};
+}
+
+@mixin transition-cubic($time: .25s, $function: cubic-bezier(1,0,0,1), $element: all) {
+	transition: $element $time $function;
+}
+
+@mixin scrollbar($width: 2px, $rail-color: #ccc, $bar-color: #999) {
+	-webkit-overflow-scrolling: touch;
+	overflow: auto;
+	scrollbar-color: $bar-color $rail-color;
+	scrollbar-width: thin;
+	&::-webkit-scrollbar {
+		width: $width;
+		height: $width;
+		background-color: $rail-color;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: $rail-color;
+	}
+	&::-webkit-scrollbar-thumb:vertical {
+		background-color: $bar-color;
+	}
+	&::-webkit-scrollbar-thumb:horizontal {
+		background-color: $bar-color;
+	}
+}

@@ -1,0 +1,46 @@
+mixin selectListItem(name, value, active, mods)
+    -
+        // список модификаторов
+        var allMods = '';
+        if(typeof(mods) !== 'undefined' && mods) {
+        var modsList = mods.split(',');
+        for (var i = 0; i < modsList.length; i++) {
+        allMods = allMods + ' simple-select__item--' + modsList[i].trim();
+        }
+        }
+        if(typeof(active) !== 'undefined' && active) {
+        allMods = allMods + ' is-active';
+        }
+    if(typeof(value) !== 'undefined' && value)
+        if(value === '')
+            value = name
+        li.simple-select__item(data-value=value class=allMods role='option')&attributes(attributes)!=name
+            block
+    else
+        li.simple-select__item(data-value=name class=allMods role='option')&attributes(attributes)!=name
+            block
+
+mixin select(data)
+    .simple-select&attributes(attributes)
+        .simple-select__main(tabindex='0' role='combobox' aria-expanded='false')
+            input(hidden type='text' name=data.inputName value=data.inputvalue data-default-value=data.inputvalue)
+            p(data-placeholder=data.placeholder).simple-select__selected!=data.selected
+            svg(width='12' height='6'): use(xlink:href='#icon-arrow-d')
+        .simple-select__drop
+            .simple-select__drop-inner
+                ul(role="listbox").simple-select__list
+                    block
+
+//-+select({
+    inputName: 'brand',
+    inputvalue: null,
+    placeholder: 'Выберите марку',
+    selected: null
+//-}).form-search__select
+    +selectListItem('Hyundai')(data-amount="862")
+    +selectListItem('Hino')(data-amount="762")
+    +selectListItem('Fuso')(data-amount="662")
+    +selectListItem('Isuzu')(data-amount="462")
+    +selectListItem('Kia')(data-amount="862")
+    +selectListItem('Автобусы')(data-amount="862")
+    +selectListItem('Прочее')(data-amount="462")
