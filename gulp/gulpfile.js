@@ -85,7 +85,7 @@ gulp.task('libscss', function () {
         // "node_modules/jquery-ui-dist/jquery-ui.min.css",
         // "node_modules/nouislider/distribute/nouislider.min.css",
         // "node_modules/rateyo/min/jquery.rateyo.min.css"
-        //"node_modules/tippy.js/index.css",
+        //"node_modules/tippy.js/dist/tippy.css",
         //"node_modules/tippy.js/themes/light.css",
     ])
         .pipe(concat('libs.min.css'))
@@ -123,7 +123,7 @@ gulp.task("libsjs", function () {
         // "node_modules/daterangepicker/daterangepicker.js",//npm i daterangepicker
 
         // "node_modules/popper.js/dist/umd/popper.js",//npm i popper.js
-        // "node_modules/tippy.js/umd/index.js",//npm i tippy.js // зависим от popper.js
+        // "node_modules/tippy.js/dist/tippy.iife.js",//npm i tippy.js // зависим от popper.js
 
         // "node_modules/gsap/src/minified/TweenMax.min.js",//gsap
         // "node_modules/gsap/src/minified/TweenLite.min.js",
