@@ -1,91 +1,29 @@
 @mixin transition($element: all, $time: .25s, $function: linear) {
-  transition: $time $function;
-  transition-property: #{$element};
+	transition: $time $function;
+	transition-property: #{$element};
 }
+
 @mixin transition-cubic($time: .25s, $function: cubic-bezier(1,0,0,1), $element: all) {
-  transition: $element $time $function;
+	transition: $element $time $function;
 }
 
-@mixin link-not-border($color: $text-color,  $color-border: rgba($text-color, .2)) {
-  display: inline;
-  color: $color;
-  &:hover {
-    background-image: linear-gradient(90deg,$color-border 50%, rgba(255,255,255,0) 0);
-    background-position: 0 100%;
-    background-repeat: repeat-x;
-    background-size: 6px 1px;
-  }
-}
-@mixin link-border($color: $text-color,  $color-border: rgba($text-color, .2)) {
-  display: inline;
-  color: $color;
-  background-image: linear-gradient(90deg,$color-border 50%, rgba(255,255,255,0) 0);
-  background-position: 0 100%;
-  background-repeat: repeat-x;
-  background-size: 6px 1px;
-  &:hover {
-    background-image: none;
-  }
-}
-
-@mixin link($border: n, $color: $text-color,  $color-border: rgba($text-color, .2)) {
-  display: inline;
-  color: $color;
-  &:hover, &:focus {
-    background-image: linear-gradient(90deg,$color-border 50%, rgba(255,255,255,0) 0);
-    background-position: 0 100%;
-    background-repeat: repeat-x;
-    background-size: 6px 1px;
-  }
-
-  @if $border == 'y' {
-    background-image: linear-gradient(90deg,$color-border 50%, rgba(255,255,255,0) 0);
-    background-position: 0 100%;
-    background-repeat: repeat-x;
-    background-size: 6px 1px;
-    &:hover, &:focus {
-      background-image: none;
-    }
-  }
-}
-@mixin link-solid($border: n, $color: $text-color,  $color-border: rgba($text-color, .2)) {
-  display: inline;
-  color: $color;
-  &:hover, &:focus {
-    background-image: linear-gradient(90deg,$color-border 50%, $color-border 0);
-    background-position: 0 100%;
-    background-repeat: repeat-x;
-    background-size: 6px 1px;
-  }
-
-  @if $border == 'y' {
-    background-image: linear-gradient(90deg,$color-border 50%, $color-border 0);
-    background-position: 0 100%;
-    background-repeat: repeat-x;
-    background-size: 6px 1px;
-    &:hover, &:focus {
-      background-image: none;
-    }
-  }
-}
 @mixin scrollbar($width: 2px, $rail-color: #ccc, $bar-color: #999) {
- //scrollbar-color: #000 #ccc;
- overflow: auto;
- -webkit-overflow-scrolling: touch;
- scrollbar-color: $bar-color $rail-color;
- scrollbar-width: thin;
- &::-webkit-scrollbar {
-   width: $width;
-   height: $width;
-   background-color: $rail-color;
- }
- &::-webkit-scrollbar-track {
-   background-color: $rail-color;
- }
- &::-webkit-scrollbar-thumb:vertical {
-   background-color: $bar-color;
- }
- &::-webkit-scrollbar-thumb:horizontal {
-   background-color: $bar-color;
- }
+	-webkit-overflow-scrolling: touch;
+	overflow: auto;
+	scrollbar-color: $bar-color $rail-color;
+	scrollbar-width: thin;
+	&::-webkit-scrollbar {
+		width: $width;
+		height: $width;
+		background-color: $rail-color;
+	}
+	&::-webkit-scrollbar-track {
+		background-color: $rail-color;
+	}
+	&::-webkit-scrollbar-thumb:vertical {
+		background-color: $bar-color;
+	}
+	&::-webkit-scrollbar-thumb:horizontal {
+		background-color: $bar-color;
+	}
 }

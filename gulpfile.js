@@ -98,6 +98,7 @@ gulp.task("libsjs", function () {
         // 'src/test/*.js',
         "node_modules/jquery/dist/jquery.min.js",//npm i --save jquery
         "node_modules/what-input/dist/what-input.js",//what-input
+        // "node_modules/intersection-observer/intersection-observer.js",//npm install intersection-observer for IE
 
         // "node_modules/swiper/dist/js/swiper.min.js",//npm install swiper
         // "node_modules/slick-carousel/slick/slick.js",
@@ -222,8 +223,9 @@ gulp.task('fav', function() {
 });
 gulp.task('trans-files', function() {
     return gulp.src([
-        'src/test/*.js'
+        'src/test/*.js',
         // 'src/mail.php',
+        'src/toDist/**/*',
     ])
         .pipe(gulp.dest('dist/'));
 });
@@ -235,6 +237,7 @@ gulp.task('clean', function() {
 
 gulp.task('watch', function () {
     //{usePolling: true}, перед gulp.parallel
+    gulp.watch(['src/toDist/**/*'], {usePolling: true}, gulp.parallel('trans-files'));
     gulp.watch(['src/styles.scss', 'src/blocks/**/*.scss'], {usePolling: true}, gulp.parallel('styles'));
     gulp.watch(['src/blocks/**/*.js', 'src/scripts.js'], {usePolling: true}, gulp.parallel('scripts'));
     gulp.watch('src/img/**/*.{png,jpg,jpeg,webp,raw,svg}', {usePolling: true}, gulp.parallel('svg', 'img'));

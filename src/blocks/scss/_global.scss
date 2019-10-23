@@ -48,9 +48,6 @@
 	&.sticky {
 		overflow: unset;
 	}
-	&.blur {
-		filter: blur(2px);
-	}
 	.header {
 		flex: 0 0 auto;
 	}
@@ -60,27 +57,5 @@
 	}
 	.footer {
 		flex: 0 0 auto;
-	}
-}
-
-%scrollbar {
-	//scrollbar-color: #000 #ccc;
-	overflow: auto;
-	-webkit-overflow-scrolling: touch;
-	scrollbar-color: #a339a5 #ededf5;
-	scrollbar-width: thin;
-	&::-webkit-scrollbar {
-		width: 2px;
-		height: 2px;
-		background-color: #ededf5;
-	}
-	&::-webkit-scrollbar-track {
-		background-color: #ededf5;
-	}
-	&::-webkit-scrollbar-thumb:vertical {
-		background-color: #a339a5;
-	}
-	&::-webkit-scrollbar-thumb:horizontal {
-		background-color: #a339a5;
 	}
 }
