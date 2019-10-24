@@ -1,5 +1,5 @@
-mixin checkbox(cl, name, ch, text, outerText, disabled)
-    .default-checkbox(class=cl)
+mixin checkbox(name, text, ch, cl, outerText, disabled)
+    .default-checkbox(class=cl)&attributes(attributes)
         if !outerText
             label.default-checkbox__label
                 if disabled
@@ -7,7 +7,7 @@ mixin checkbox(cl, name, ch, text, outerText, disabled)
                 else
                     input(type="checkbox" name=name checked=ch hidden)
                 span(tabindex='0').default-checkbox__custom
-                    svg(width="10" height="8"): use(xlink:href="#icon-check")
+                    svg(width="8" height="6"): use(xlink:href="#icon-check")
                 span.default-checkbox__text!=text
         else
             label.default-checkbox__label
@@ -16,8 +16,7 @@ mixin checkbox(cl, name, ch, text, outerText, disabled)
                 else
                     input(type="checkbox" name=name checked=ch hidden)
                 span(tabindex='0').default-checkbox__custom
-                    svg(width="10" height="8"): use(xlink:href="#icon-check")
+                    svg(width="8" height="6"): use(xlink:href="#icon-check")
                 span.default-checkbox__text!=text
             !=outerText
-//- +checkbox('', 'agree', true, 'Запомнить меня')
-//- +checkbox('custom-class', 'agree', false, 'Согласен на <a href="#">обработку персональных данных</a> и <a href="#">принимаю условия пользовательского соглашения</a>', true)
+//- +checkbox('agree', 'Запомнить меня', true)

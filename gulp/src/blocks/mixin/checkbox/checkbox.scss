@@ -11,7 +11,7 @@
   &--error {
     .default-checkbox {
       &__custom {
-        border-color: $red;
+        border-color: $color-error;
       }
     }
   }
@@ -59,8 +59,8 @@
     &:checked {
       & ~ .default-checkbox {
         &__custom {
-          border-color: $purple;
-          background-color: $purple;
+          border-color: cornflowerblue;
+          background-color: cornflowerblue;
           svg {
             transform: scale(1);
           }
@@ -70,8 +70,8 @@
     &.disabled, &:disabled {
       & ~ .default-checkbox {
         &__custom {
-          border-color: $purple;
-          background-color: $purple;
+          border-color: gray;
+          background-color: gray;
           opacity: .4;
           svg {
             transform: scale(1);
@@ -80,7 +80,7 @@
       }
     }
     &.error ~ .default-checkbox__custom {
-      border-color: #FF0000;
+      border-color: $color-error;
     }
   }
   label.error {
