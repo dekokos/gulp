@@ -4,10 +4,12 @@
 	width: 240px;
 	height: 48px;
 	&.is-active {
-		svg {
-			transform: scaleY(-1);
-		}
 		.simple-select {
+			&__main {
+				svg {
+					transform: scaleY(-1);
+				}
+			}
 			&__drop {
 				transform: scale(1);
 				visibility: visible;

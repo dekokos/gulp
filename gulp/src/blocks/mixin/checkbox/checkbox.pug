@@ -7,7 +7,7 @@ mixin checkbox(name, text, ch, cl, outerText, disabled)
                 else
                     input(type="checkbox" name=name checked=ch hidden)
                 span(tabindex='0').default-checkbox__custom
-                    svg(width="8" height="6"): use(xlink:href="#icon-check")
+                    svg(width="13" height="10"): use(xlink:href="#icon-check")
                 span.default-checkbox__text!=text
         else
             label.default-checkbox__label
@@ -16,7 +16,7 @@ mixin checkbox(name, text, ch, cl, outerText, disabled)
                 else
                     input(type="checkbox" name=name checked=ch hidden)
                 span(tabindex='0').default-checkbox__custom
-                    svg(width="8" height="6"): use(xlink:href="#icon-check")
+                    svg(width="13" height="10"): use(xlink:href="#icon-check")
                 span.default-checkbox__text!=text
             !=outerText
 //- +checkbox('agree', 'Запомнить меня', true)

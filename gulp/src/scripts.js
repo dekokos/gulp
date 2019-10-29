@@ -1,9 +1,3 @@
-const arrowRight = `<div class="default-arrow default-arrow--next"><svg width="8" height="13" viewBox="0 0 7 13" xmlns="http://www.w3.org/2000/svg">
-<path d="M6.71152 7.33967L1.55171 12.4993C1.22349 12.8277 0.691324 12.8277 0.363258 12.4993C0.0351642 12.1712 0.0351642 11.6391 0.363258 11.311L4.92889 6.74552L0.36339 2.18018C0.0352969 1.85195 0.0352969 1.31987 0.36339 0.991775C0.691484 0.663549 1.22362 0.663549 1.55185 0.991775L6.71165 6.1515C6.8757 6.31563 6.95763 6.53051 6.95763 6.74549C6.95763 6.96058 6.87554 7.17562 6.71152 7.33967Z"/>
-</svg></div>`;
-const arrowLeft = `<div class="default-arrow default-arrow--prev"><svg width="8" height="13" viewBox="0 0 8 13" xmlns="http://www.w3.org/2000/svg">
-<path d="M0.48379 6.15154L5.6436 0.991895C5.97183 0.663508 6.50399 0.663508 6.83205 0.991895C7.16015 1.31999 7.16015 1.85212 6.83205 2.18019L2.26642 6.74569L6.83192 11.311C7.16002 11.6393 7.16002 12.1713 6.83192 12.4994C6.50383 12.8277 5.97169 12.8277 5.64347 12.4994L0.483658 7.33971C0.319611 7.17558 0.23768 6.9607 0.23768 6.74572C0.23768 6.53063 0.31977 6.31559 0.48379 6.15154Z"/>
-</svg></div>`;
 isMobile = {
     Android: function() {
         return navigator.userAgent.match(/Android/i);
@@ -114,3 +108,91 @@ function modalCloseMac() {
         $('html,body').scrollTop(-scrollTop);
     }
 }
+
+class NoScroll {
+    constructor(fixedElements) {
+        this.html = $('html');
+        this.body = $('body');
+        this.scrollTop = 0;
+        this.scrollWidth = this.getScrollWidth();
+        this.fixedElements = fixedElements;
+
+        this.createCss();
+    }
+    createCss() {
+        this.css = `
+            .noScroll {
+                position: fixed;
+                overflow: hidden;
+            }
+        `;
+        this.head = document.head || document.getElementsByTagName('head')[0];
+        this.style = document.createElement('style');
+        this.body.prepend(this.style);
+        this.style.appendChild(document.createTextNode(this.css));
+    }
+    getScrollWidth() {
+        let outer = document.createElement("div");
+        outer.style.visibility = "hidden";
+        outer.style.width = "100px";
+        outer.style.msOverflowStyle = "scrollbar";
+
+        this.body[0].appendChild(outer);
+
+        let widthNoScroll = outer.offsetWidth;
+        outer.style.overflow = "scroll";
+
+        let inner = document.createElement("div");
+        inner.style.width = "100%";
+        outer.appendChild(inner);
+
+        let widthWithScroll = inner.offsetWidth;
+
+        outer.parentNode.removeChild(outer);
+        return widthNoScroll - widthWithScroll;
+    }
+    disableScroll() {
+        this.scrollTop = this.html.scrollTop() ? this.html.scrollTop() : this.body.scrollTop();
+        this.scrollWidth = this.getScrollWidth();
+
+        this.html.addClass('noScroll').css({
+            'top': -this.scrollTop,
+            'margin-right': this.scrollWidth,
+            'width': `calc(100% - ${this.scrollWidth}px`,
+        });
+        if ($(this.fixedElements).length) {
+            $(this.fixedElements).each((i, el)=> {
+                let elJQ = $(el);
+                let elWidth = elJQ.outerWidth();
+                let pos = elJQ.css('position');
+                if (pos === 'fixed') {
+                    $(el).css({
+                        'width': elWidth + this.scrollWidth >= window.innerWidth ? elWidth - this.scrollWidth : '',
+                        'margin-right': this.scrollWidth,
+                    });
+                }
+
+            });
+        }
+    }
+    enableScroll() {
+        this.html.removeClass('noScroll').css({
+            'top': '',
+            'margin-right': '',
+            'width': '',
+        });
+        if ($(this.fixedElements).length) {
+            $(this.fixedElements).css({
+                'width': '',
+                'margin-right': '',
+            });
+        }
+        $(this.html, this.body).scrollTop(this.scrollTop);
+        this.scrollTop = 0;
+    }
+}
+const noScroll = new NoScroll();
+
+$(function () {
+
+});
