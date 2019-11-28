@@ -133,7 +133,8 @@ gulp.task("libsjs", function () {
         // "node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js", // scrollmagic
         // "node_modules/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js",
         // "node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js", //удалить перед релизом
-        // "node_modules/pubsub-js/src/pubsub.js", // pubsub-js
+        // "node_modules/pubsub-js/src/pubsub.js", // pubsub-js,
+        // "node_modules/wow.js/dist/wow.js",
 
         // "node_modules/three/build/three.min.js",//three
         // "node_modules/three-orbit-controls/index.js",//three-orbit-controls //let OrbitControls = require('three-orbit-controls')(THREE);
