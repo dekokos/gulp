@@ -125,12 +125,11 @@ gulp.task("libsjs", function () {
         // "node_modules/popper.js/dist/umd/popper.js",//npm i popper.js
         // "node_modules/tippy.js/dist/tippy.iife.js",//npm i tippy.js // зависим от popper.js
 
-        // 'src/libs/morph/morph.min.js',//morph от гсап, зависимости не нужны
-        // "node_modules/gsap/src/minified/TweenMax.min.js",//gsap
-        // "node_modules/gsap/src/minified/TweenLite.min.js",
-        // "node_modules/gsap/src/minified/TimelineMax.min.js",
-        // "node_modules/gsap/src/minified/plugins/EndArrayPlugin.min.js",
-        // "node_modules/gsap/src/minified/utils/Draggable.min.js",
+        // 'src/libs/morph/TweenMax.min.js',//gsap v1.18
+        // 'src/libs/morph/morph.min.js',//совместим только с v1.18
+
+        // "node_modules/gsap/dist/gsap.js",//gsap
+        // "node_modules/gsap/dist/Draggable.js",
         // "node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js", // scrollmagic
         // "node_modules/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js",
         // "node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js", //удалить перед релизом
