@@ -224,7 +224,7 @@ gulp.task('fav', function() {
 });
 gulp.task('trans-files', function() {
     return gulp.src([
-        'src/test/*.js',
+        // 'src/test/*.js',
         // 'src/mail.php',
         'src/toDist/**/*',
     ])
