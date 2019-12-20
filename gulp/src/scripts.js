@@ -1,3 +1,7 @@
+$(function () {
+
+});
+
 isMobile = {
     Android: function() {
         return navigator.userAgent.match(/Android/i);
@@ -192,7 +196,3 @@ class NoScroll {
     }
 }
 const noScroll = new NoScroll();
-
-$(function () {
-
-});
