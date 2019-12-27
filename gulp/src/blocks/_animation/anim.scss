@@ -1,0 +1,79 @@
+.splitting .word {
+	display: inline-block;
+	white-space: nowrap;
+}
+.splitting .char {
+	display: inline-block;
+}
+.splitting .char {
+	position: relative;
+}
+
+[data-obs-name='mask'] {
+	mask-position: center;
+	mask-clip: no-clip;
+}
+
+%anim-dram {
+	overflow: hidden;
+	&:hover {
+		&>span {
+			transform: translateY(-120%);
+			&:after {
+				transform: translateY(0);
+			}
+		}
+	}
+	&>span {
+		position: relative;
+		display: inline-block;
+		transform: translateY(0);
+		transition: transform .3s ease;
+		&:after {
+			content: attr(data-text);
+			display: inline-block;
+			color: $green;
+			position: absolute;
+			top: 120%;
+			left: 0;
+		}
+	}
+}
+
+%btn-inline-arr {
+	position: relative;
+	transition: .4s ease;
+	transition-property: color;
+	&:hover {
+		&:after {
+			animation: txtShadow .4s linear;
+		}
+		svg {
+			fill: $green;
+			transform: translateX(-5px);
+		}
+	}
+	&:after {
+		content: attr(data-text);
+		position: absolute;
+		top: 0;
+		left: 0;
+		color: rgba(0,0,0,0);
+	}
+	svg {
+		transition: .4s ease;
+		transition-property: transform, fill;
+	}
+}
+@keyframes txtShadow {
+	0% {
+		text-shadow: 0 0 0 $text-color;
+		transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		text-shadow: 0 0 4px $text-color;
+		transform: scale(2);
+		opacity: 0;
+	}
+}
