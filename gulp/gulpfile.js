@@ -160,27 +160,6 @@ gulp.task('browser-sync', function () {
     });
 });
 
-gulp.task('minjs', function() {
-    return gulp.src([
-        'src/test/*.js'
-    ])
-        // .pipe(babel())
-        // .pipe(rename({ suffix: '.min' }))
-        .pipe(uglify())
-        .pipe(gulp.dest('dist/js/'))
-        .pipe(browserSync.reload({ stream: true }));
-});
-var srcNoMinJs = [
-    'src/pages-switcher.js',
-    'src/rs.js'
-];
-gulp.task('nominjs', function() {
-    return gulp.src(srcNoMinJs)
-        // .pipe(babel())
-        .pipe(gulp.dest('dist/js/'))
-        .pipe(browserSync.reload({ stream: true }));
-});
-
 gulp.task('svg', function () {
     return gulp.src('src/img/svg/*.svg')
     // remove all fill and style declarations in out shapes
@@ -222,10 +201,8 @@ gulp.task('fav', function() {
     ])
         .pipe(gulp.dest('dist/favicon/'));
 });
-gulp.task('trans-files', function() {
+gulp.task('to-dist', function() {
     return gulp.src([
-        // 'src/test/*.js',
-        // 'src/mail.php',
         'src/toDist/**/*',
     ])
         .pipe(gulp.dest('dist/'));
@@ -238,14 +215,13 @@ gulp.task('clean', function() {
 
 gulp.task('watch', function () {
     //{usePolling: true}, перед gulp.parallel
-    gulp.watch(['src/toDist/**/*'], {usePolling: true}, gulp.parallel('trans-files'));
+    gulp.watch(['src/toDist/**/*'], {usePolling: true}, gulp.parallel('to-dist'));
     gulp.watch(['src/styles.scss', 'src/blocks/**/*.scss'], {usePolling: true}, gulp.parallel('styles'));
     gulp.watch(['src/blocks/**/*.js', 'src/scripts.js'], {usePolling: true}, gulp.parallel('scripts'));
     gulp.watch('src/img/**/*.{png,jpg,jpeg,webp,raw,svg}', {usePolling: true}, gulp.parallel('svg', 'img'));
-    gulp.watch(srcNoMinJs, gulp.parallel('nominjs'));
     gulp.watch(['src/blocks/**/*.pug','src/blocks/**/*.html', 'src/pages/**/*.pug', 'src/pages/**/*.html', 'src/img/svg/svg-sprite.html'], {usePolling: true}, gulp.parallel('pug'));
 });
 
-gulp.task('trans', gulp.parallel('nominjs', 'minjs', 'fonts', 'img', 'fav', 'trans-files'));
+gulp.task('trans', gulp.parallel('fonts', 'img', 'fav', 'to-dist'));
 gulp.task('dev', gulp.series('clean', gulp.parallel('pug', 'styles', 'scripts', 'libscss','libsjs', 'trans')));
-gulp.task('default', gulp.parallel('browser-sync', 'watch'));
+gulp.task('default', gulp.series('dev', gulp.parallel('browser-sync', 'watch')));
