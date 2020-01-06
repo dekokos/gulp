@@ -110,7 +110,7 @@ gulp.task("libsjs", function () {
         // "node_modules/nouislider/distribute/nouislider.min.js",
         // "node_modules/rateyo/min/jquery.rateyo.min.js",// rateyo
         // "node_modules/dotdotdot-js/dist/dotdotdot.js",
-        // "node_modules/inputmask/dist/min/jquery.inputmask.bundle.min.js", // inputmask
+        // "node_modules/inputmask/dist/jquery.inputmask.min.js", // npm i inputmask
         // "node_modules/jquery-validation/dist/jquery.validate.min.js", // npm i jquery-validation
         // "node_modules/jquery-validation/dist/localization/messages_ru.min.js",
 
