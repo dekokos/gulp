@@ -1,7 +1,5 @@
 "use strict";
 
-var syntax          = 'scss';//scss less
-
 var gulp = require('gulp'),
     pug = require('gulp-pug'),
     sass = require('gulp-sass'),
@@ -189,21 +187,10 @@ gulp.task('img', function() {
         .pipe(gulp.dest('dist/img/'));
 });
 
-gulp.task('fonts', function() {
+
+gulp.task('static', function() {
     return gulp.src([
-        'src/fonts/**'
-    ])
-        .pipe(gulp.dest('dist/fonts/'));
-});
-gulp.task('fav', function() {
-    return gulp.src([
-        'src/favicon/**'
-    ])
-        .pipe(gulp.dest('dist/favicon/'));
-});
-gulp.task('to-dist', function() {
-    return gulp.src([
-        'src/toDist/**/*',
+        'src/static/**/*',
     ])
         .pipe(gulp.dest('dist/'));
 });
@@ -222,6 +209,5 @@ gulp.task('watch', function () {
     gulp.watch(['src/blocks/**/*.pug','src/blocks/**/*.html', 'src/pages/**/*.pug', 'src/pages/**/*.html', 'src/img/svg/svg-sprite.html'], {usePolling: true}, gulp.parallel('pug'));
 });
 
-gulp.task('trans', gulp.parallel('fonts', 'img', 'fav', 'to-dist'));
-gulp.task('dev', gulp.series('clean', gulp.parallel('pug', 'styles', 'scripts', 'libscss','libsjs', 'trans')));
+gulp.task('dev', gulp.series('clean', gulp.parallel('pug', 'styles', 'scripts', 'libscss','libsjs', 'static', 'img')));
 gulp.task('default', gulp.series('dev', gulp.parallel('browser-sync', 'watch')));
