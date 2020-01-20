@@ -98,7 +98,7 @@ gulp.task("libsjs", function () {
         // 'src/test/*.js',
         "node_modules/jquery/dist/jquery.min.js",//npm i --save jquery
         "node_modules/what-input/dist/what-input.js",//what-input
-        // "node_modules/intersection-observer/intersection-observer.js",//npm install intersection-observer for IE
+        // "node_modules/intersection-observer/intersection-observer.js",//npm install intersection-observer for IE => observer.POLL_INTERVAL = 100;
 
         // "node_modules/swiper/js/swiper.min.js",//npm install swiper
         // "node_modules/slick-carousel/slick/slick.js",
