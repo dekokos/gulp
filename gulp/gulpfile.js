@@ -127,6 +127,7 @@ gulp.task("libsjs", function () {
         // 'src/libs/morph/morph.min.js',//совместим только с v1.18
 
         // "node_modules/gsap/dist/gsap.js",//gsap
+        // "src/libs/CustomEase.js",
         // "node_modules/gsap/dist/Draggable.js",
         // "node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js", // scrollmagic
         // "node_modules/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js",
