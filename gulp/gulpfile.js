@@ -126,6 +126,7 @@ gulp.task("libsjs", function () {
         // 'src/libs/morph/TweenMax.min.js',//gsap v1.18
         // 'src/libs/morph/morph.min.js',//совместим только с v1.18
 
+        // "node_modules/splitting/dist/splitting.js",//npm i splitting
         // "node_modules/gsap/dist/gsap.js",//gsap
         // "src/libs/CustomEase.js",
         // "node_modules/gsap/dist/Draggable.js",
