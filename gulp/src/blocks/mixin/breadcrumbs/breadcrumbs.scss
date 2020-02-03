@@ -4,7 +4,7 @@
   list-style-type: none;
   font-size: 14px;
   line-height: 20px;
-  color: $gray-99;
+  color: #000;
   padding: 24px 0 32px;
   margin: 0;
   &__back {
@@ -24,18 +24,17 @@
     }
   }
   span {
-    color: $gray-4d;
+    color: #000;
   }
   &__item {
     position: relative;
     display: flex;
     align-items: center;
     &::after {
-      content: "";
+      content: "-";
       position: relative;
       width: 12px;
       height: 12px;
-      background-image: url(../img/arr-r-4d.svg);
       display: block;
       margin: 0 16px;
     }
@@ -43,24 +42,6 @@
       &::after {
         display: none;
       }
-    }
-  }
-  &__link {
-    @include link(n,$gray-99,rgba($blue,.3));
-    &:hover {
-      color: $blue;
-    }
-  }
-}
-
-@media (max-width: $mobile-big) {
-  .breadcrumbs {
-    padding: 12px 0 24px;
-    &__back {
-      display: flex;
-    }
-    &__item {
-      display: none;
     }
   }
 }

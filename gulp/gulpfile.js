@@ -1,6 +1,6 @@
 "use strict";
 
-var gulp = require('gulp'),
+const gulp = require('gulp'),
     pug = require('gulp-pug'),
     sass = require('gulp-sass'),
     babel = require("gulp-babel"),
@@ -54,7 +54,7 @@ gulp.task('styles', function () {
     ])
         .pipe(plumber())
         .pipe(sourcemaps.init())
-        .pipe(concat('styles.scss'))
+        // .pipe(concat('styles.scss'))
         .pipe(sass().on('error', notify.onError()))
         .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8']))
         .pipe(cssnano({ zindex: false, colormin: false }))
@@ -193,7 +193,8 @@ gulp.task('static', function() {
     return gulp.src([
         'src/static/**/*',
     ])
-        .pipe(gulp.dest('dist/'));
+        .pipe(gulp.dest('dist/'))
+        .pipe(browserSync.reload({ stream: true }));
 });
 
 gulp.task('clean', function() {
@@ -203,7 +204,7 @@ gulp.task('clean', function() {
 
 gulp.task('watch', function () {
     //{usePolling: true}, перед gulp.parallel
-    gulp.watch(['src/toDist/**/*'], {usePolling: true}, gulp.parallel('to-dist'));
+    gulp.watch(['src/static/**/*'], {usePolling: true}, gulp.parallel('static'));
     gulp.watch(['src/styles.scss', 'src/blocks/**/*.scss'], {usePolling: true}, gulp.parallel('styles'));
     gulp.watch(['src/blocks/**/*.js', 'src/scripts.js'], {usePolling: true}, gulp.parallel('scripts'));
     gulp.watch('src/img/**/*.{png,jpg,jpeg,webp,raw,svg}', {usePolling: true}, gulp.parallel('svg', 'img'));

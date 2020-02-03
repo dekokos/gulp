@@ -22,7 +22,7 @@
 	}
 	&__custom {
 		position: relative;
-		border: 1px solid $blue-light;
+		border: 1px solid cornflowerblue;
 		border-radius: 50%;
 		flex-shrink: 0;
 		width: 20px;
@@ -44,7 +44,7 @@
 		&:checked {
 			& ~ .default-radio {
 				&__custom {
-					border-color: $purple;
+					border-color: cornflowerblue;
 					border-width: 6px;
 				}
 			}
@@ -52,7 +52,7 @@
 		&.disabled, &:disabled {
 			& ~ .default-radio {
 				&__custom {
-					border-color: $purple;
+					border-color: cornflowerblue;
 					border-width: 6px;
 					opacity: .4;
 				}

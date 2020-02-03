@@ -1,14 +1,14 @@
 .slider-r-box {
 	&:hover {
 		.slider-r-wrapper {
-			border-color: $gray-99;
+			border-color: cornflowerblue;
 		}
 	}
 
 	.slider-r-wrapper {
 		position: relative;
 		height: 48px;
-		border: 1px solid $gray-d5;
+		border: 1px solid cornflowerblue;
 		border-radius: 3px;
 		@include transition(border-color);
 	}
@@ -17,7 +17,7 @@
 		font-size: 12px;
 		line-height: 16px;
 		font-weight: 500;
-		color: $gray-4d;
+		color: cornflowerblue;
 		margin-bottom: 12px;
 	}
 
@@ -39,7 +39,7 @@
 		position: relative;
 		@include transition(color);
 		&.is-active {
-			color: $blue;
+			color: cornflowerblue;
 		}
 		span {
 			position: relative;
@@ -62,7 +62,7 @@
 		overflow: visible;
 	}
 	.noUi-connect {
-		background: $blue;
+		background: cornflowerblue;
 		//&::before {
 		//	content: '';
 		//	position: absolute;
@@ -78,7 +78,7 @@
 		width: 15px;
 		height: 15px;
 		border-radius: 50%;
-		background: $blue;
+		background: cornflowerblue;
 		border: 2px solid #fff;
 		box-shadow: none;
 		cursor: pointer;
