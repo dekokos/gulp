@@ -30,7 +30,7 @@ $(function() {
 function showModal(e) {
     $("body").addClass("modal-open");
     var modal = $("." + e + "");
-    $('html').addClass('no-scroll');
+
     ///////////////////
     modalOpenMac();
     ///////////////////
@@ -43,6 +43,7 @@ function showModal(e) {
     } else {
         modal.addClass("is-active");
     }
+    $('html').addClass('no-scroll');
 
     var isIE = /*@cc_on!@*/false || !!document.documentMode;
     if (isIE === true) {
