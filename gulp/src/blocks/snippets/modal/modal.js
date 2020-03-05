@@ -28,32 +28,33 @@ $(function() {
 
 });
 function showModal(e) {
-    $("body").addClass("modal-open");
-    var modal = $("." + e + "");
+    setTimeount(function() {
+        $("body").addClass("modal-open");
+        var modal = $("." + e + "");
 
-    ///////////////////
-    modalOpenMac();
-    ///////////////////
-    if (hasScrollbar()) {
-        var scrollWidth = getScrollbarWidth();
-        $("html").css({
-            "margin-right": scrollWidth
-        });
-        modal.addClass("is-active");
-    } else {
-        modal.addClass("is-active");
-    }
-    $('html').addClass('no-scroll');
-
-    var isIE = /*@cc_on!@*/false || !!document.documentMode;
-    if (isIE === true) {
-        if ( modal.find(".default-modal__content").outerHeight() > $(window).height() ) {
-            modal.css("display", "block");
-        }else {
-            modal.removeAttr("style");
+        ///////////////////
+        modalOpenMac();
+        ///////////////////
+        if (hasScrollbar()) {
+            var scrollWidth = getScrollbarWidth();
+            $("html").css({
+                "margin-right": scrollWidth
+            });
+            modal.addClass("is-active");
+        } else {
+            modal.addClass("is-active");
         }
-    }
+        $('html').addClass('no-scroll');
 
+        var isIE = /*@cc_on!@*/false || !!document.documentMode;
+        if (isIE === true) {
+            if ( modal.find(".default-modal__content").outerHeight() > $(window).height() ) {
+                modal.css("display", "block");
+            }else {
+                modal.removeAttr("style");
+            }
+        }
+    }, 0);
 }
 function callbackClose() {
     if ($("body").hasClass("modal-open") && !$("body").hasClass("mob-nav-open")) {
