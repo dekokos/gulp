@@ -127,9 +127,19 @@ gulp.task("libsjs", function () {
         // 'src/libs/morph/morph.min.js',//совместим только с v1.18
 
         // "node_modules/splitting/dist/splitting.js",//npm i splitting
+        //******* gsap plugins START *******
         // "node_modules/gsap/dist/gsap.js",//gsap
         // "src/libs/CustomEase.js",
+        // "node_modules/gsap/dist/CSSRulePlugin.js",
         // "node_modules/gsap/dist/Draggable.js",
+        // "node_modules/gsap/dist/EaselPlugin.js",
+        // "node_modules/gsap/dist/EasePack.js",
+        // "node_modules/gsap/dist/MotionPathPlugin.js",
+        // "node_modules/gsap/dist/PixiPlugin.js",
+        // "node_modules/gsap/dist/ScrollToPlugin.js",
+        // "node_modules/gsap/dist/TextPlugin.js",
+        //******* gsap plugins END *******
+
         // "node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js", // scrollmagic
         // "node_modules/scrollmagic/scrollmagic/minified/plugins/animation.gsap.min.js",
         // "node_modules/scrollmagic/scrollmagic/minified/plugins/debug.addIndicators.min.js", //удалить перед релизом
