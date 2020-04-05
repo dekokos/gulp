@@ -28,7 +28,7 @@ $(function() {
 
 });
 function showModal(e) {
-    setTimeount(function() {
+    setTimeout(function() {
         $("body").addClass("modal-open");
         var modal = $("." + e + "");
 
