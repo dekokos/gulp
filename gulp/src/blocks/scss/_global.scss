@@ -59,3 +59,13 @@
 		flex: 0 0 auto;
 	}
 }
+// @supports (-webkit-line-clamp: 6) {
+// 	.your-class {
+// 			display: -webkit-box;
+// 			white-space: normal;
+// 			text-overflow: ellipsis;
+// 			-webkit-box-orient: vertical;//
+// 			-webkit-line-clamp: 6;
+// 			overflow: hidden;
+// 	}
+// }

@@ -57,7 +57,7 @@ gulp.task('styles', function () {
         // .pipe(concat('styles.scss'))
         .pipe(sass().on('error', notify.onError()))
         .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8']))
-        .pipe(cssnano({ zindex: false, colormin: false }))
+        .pipe(cssnano({ zindex: false, colormin: false, autoprefixer: false }))
         .pipe(rename({ suffix: '.min' }))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('dist/css/'))
