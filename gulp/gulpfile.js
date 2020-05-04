@@ -84,7 +84,11 @@ gulp.task('libscss', function () {
         // "node_modules/nouislider/distribute/nouislider.min.css",
         // "node_modules/rateyo/min/jquery.rateyo.min.css"
         //"node_modules/tippy.js/dist/tippy.css",
+        // "node_modules/tippy.js/dist/backdrop.css",
+        // "node_modules/tippy.js/dist/border.css",
+        // "node_modules/tippy.js/dist/svg-arrow.css",
         //"node_modules/tippy.js/themes/light.css",
+        //"node_modules/tippy.js/animations/perspective.css",
     ])
         .pipe(concat('libs.min.css'))
         .pipe(cssnano())
@@ -121,7 +125,7 @@ gulp.task("libsjs", function () {
         // "node_modules/daterangepicker/daterangepicker.js",//npm i daterangepicker
 
         // "node_modules/popper.js/dist/umd/popper.js",//npm i popper.js
-        // "node_modules/tippy.js/dist/tippy.iife.js",//npm i tippy.js // зависим от popper.js
+        // "node_modules/tippy.js/dist/tippy.umd.js",//npm i tippy.js // зависим от popper.js
 
         // 'src/libs/morph/TweenMax.min.js',//gsap v1.18
         // 'src/libs/morph/morph.min.js',//совместим только с v1.18
