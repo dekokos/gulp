@@ -1,3 +1,11 @@
+@mixin fontRuble($f-name, $f-style, $f-weight, $f-url) {
+	@font-face {
+		font-family: $f-name;
+		font-style:  $f-style;
+		font-weight: $f-weight;
+		src: url('../fonts/#{$f-url}.ttf') format('truetype');
+	}
+}
 @mixin font($f-name, $f-style, $f-weight, $f-url) {
 	@font-face {
 	  font-family: $f-name;
