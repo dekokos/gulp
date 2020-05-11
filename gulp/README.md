@@ -5,7 +5,7 @@ gulp template
 
 **gulp clean** - удаление папки **dist**<br />
 **gulp dev** - собрать проект<br />
-**gulp static** - перенос файлов с сохранением структуры из **src/static в dist/**,
+**gulp static** - перенос файлов с сохранением структуры из **src/static** в **dist/**,
   например: 
 + src/static/filename.php => dist/filename.php; 
 + src/static/js/rs.js => dist/js/rs.js<br />
