@@ -1,3 +1,12 @@
+/* smartphones, touchscreens */
+//@media (hover: none) and (pointer: coarse) {}
+/* stylus-based screens */
+//@media (hover: none) and (pointer: fine) {}
+/* Nintendo Wii controller, Microsoft Kinect */
+//@media (hover: hover) and (pointer: coarse) {}
+/* mouse, touch pad */
+//@media (hover: hover) and (pointer: fine) {}
+
 [data-whatintent='touch'],
 [data-whatintent='mouse'] {
 	*:focus {
