@@ -124,7 +124,7 @@ gulp.task("libsjs", function () {
         // "node_modules/daterangepicker/moment.min.js",//npm i daterangepicker
         // "node_modules/daterangepicker/daterangepicker.js",//npm i daterangepicker
 
-        // "node_modules/popper.js/dist/umd/popper.js",//npm i popper.js
+        // "node_modules/@popperjs/core/dist/umd/popper.js",//npm i @popperjs/core
         // "node_modules/tippy.js/dist/tippy.umd.js",//npm i tippy.js // зависим от popper.js
 
         // 'src/libs/morph/TweenMax.min.js',//gsap v1.18
