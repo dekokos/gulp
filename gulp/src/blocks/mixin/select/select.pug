@@ -22,8 +22,8 @@ mixin selectListItem(name, value, active, mods)
 
 mixin select(data)
     .simple-select&attributes(attributes)
+        input(hidden type='text' name=data.inputName value=data.inputvalue data-default-value=data.inputvalue)
         .simple-select__main(tabindex='0' role='combobox' aria-expanded='false')
-            input(hidden type='text' name=data.inputName value=data.inputvalue data-default-value=data.inputvalue)
             p(data-placeholder=data.placeholder).simple-select__selected!=data.selected
             svg(width='12' height='6'): use(xlink:href='#icon-arrow-d')
         .simple-select__drop

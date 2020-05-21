@@ -25,7 +25,7 @@ $(function () {
         select.removeClass('is-active');
         select.find('.simple-select__item').removeClass('is-active');
         select.find('.simple-select__selected').text(text);
-        select.find('input').val(val).change();
+        select.find('input').val(val).change().blur();
         $(this).addClass('is-active').blur();//blur для закрытия списка, из-за стилей, которые позволяют открыть список при фокусе на эл. списка
     });
     $(document).on('click', function (e) {
