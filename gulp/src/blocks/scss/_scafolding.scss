@@ -90,6 +90,13 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
+//for safari
+input[type="search"] {
+	-webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
 
 blockquote {
   margin: 0;
