@@ -1,6 +1,6 @@
-$(function () {
-
-});
+const mac = navigator.platform.match(/(Mac|iPhone|iPod|iPad)/i) ? true : false;
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+isSafari && document.documentElement.classList.add('is-safari');
 
 //pureJS polyfills IE
 (function() {
@@ -117,8 +117,6 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     }
     return s.join(dec);
 }
-
-var mac = navigator.platform.match(/(Mac|iPhone|iPod|iPad)/i) ? true : false;
 
 function modalOpenMac() {
     if ( mac ) {
