@@ -15,5 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
     //     showMaskOnHover: false,
     //     showMaskOnFocus: true
     // });
+    // data-inputmask='"mask": "+7(999) 999-99-99"' data-num-min='11' data-msg-checkMin='Введите весь номер' placeholder='+7(___) ___-__-__'
 
 });
