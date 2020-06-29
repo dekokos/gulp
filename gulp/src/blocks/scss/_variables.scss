@@ -1,19 +1,22 @@
-// Widths
+// Widths   420 479 575 640 767 991 1199 1400 
 $mobile-sm:     479px;
 $mobile:        575px;
 $mobile-big:    767px;
 $tablet:        991px;
 $desktop:       1199px;
 
+$grid-spacing: 20px;
+$grid-spacing-sm: 10px;
+
+$base-img: '../img/';
+
 // Fonts
 $default-font: 'Open Sans', sans-serif;//400/700
 $additional-font: 'Montserrat', sans-serif;//400/700/800
 
-
 // Colors
 $text-color: #000;
 
-$color-placeholder: rgba(0,0,0,.5);
 $color-error: #E60000;
 
 $red: #FF4200;

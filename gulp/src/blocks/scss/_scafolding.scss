@@ -23,9 +23,9 @@
   box-sizing: inherit;
 }
 
-html {
-	//touch-action: manipulation;
-}
+// html {
+// 	touch-action: manipulation;
+// }
 body {
 	position: relative;
 	margin: 0;
@@ -87,10 +87,12 @@ select {
   }
 }
 
+input[type=submit] {
+	width: auto;
+}
 input[type='number'] {
   -moz-appearance: textfield;
 }
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -107,50 +109,33 @@ blockquote {
   margin: 0;
 }
 
-h3,h4,h5,h5 {
+h1,h2,h3,h4,h5,h6 {
 	font-weight: bold;
 }
 h1 {
   font-size: 42px;
 	line-height: 51px;
 	font-weight: 800;
-	@media (max-width: $mobile-big) {
-		font-size: 28px;
-		line-height: 34px;
-	}
 }
 h2 {
 	font-size: 42px;
 	line-height: 51px;
 	font-weight: 800;
-	@media (max-width: $mobile-big) {
-		font-size: 28px;
-		line-height: 34px;
-	}
 }
 h3 {
 	font-size: 28px;
 	line-height: 34px;
-	@media (max-width: $mobile-big) {
-		font-size: 22px;
-		line-height: 27px;
-	}
 }
 h4 {
   font-size: 22px;
-	line-height: 27px;
-	@media (max-width: $mobile-big) {
-		font-size: 16px;
-		line-height: 25px;
-	}
 }
 
 .container {
 	max-width: 1340px;//1300
 	width: 100%;
 	margin: auto;
-	padding: 0 20px;
-	@media screen and (max-width: $mobile) {
-		padding: 0 10px;
+	padding: 0 $grid-spacing;
+	@media (max-width: $mobile) {
+		padding: 0 $grid-spacing-sm;
 	}
 }
