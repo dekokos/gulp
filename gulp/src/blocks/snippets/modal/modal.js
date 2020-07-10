@@ -27,7 +27,36 @@ $(function() {
     });
 
 });
+let modalFixedEl = $('[data-modal-fixed]');
+function fixedModalFixedEl() {
+    modalFixedEl.each(function (i, el) {
+        let media = el.dataset.modalFixed;
+        if (media && window.innerWidth <= media) return;
+        let rect = el.getBoundingClientRect();
+        $(el).css({
+            position: 'fixed',
+            right: 'auto',
+            left: rect.left,
+            top: rect.top,
+            width: rect.width
+        })
+    });
+}
+function unfixedModalFixedEl() {
+    modalFixedEl.each(function (i, el) {
+        let media = el.dataset.modalFixed;
+        if (media && window.innerWidth <= media) return;
+        $(el).css({
+            position: '',
+            right: '',
+            left: '',
+            top: '',
+            width: ''
+        })
+    });
+}
 function showModal(e) {
+    fixedModalFixedEl();
     setTimeout(function() {
         $("body").addClass("modal-open");
         var modal = $("." + e + "");
@@ -66,6 +95,7 @@ function callbackClose() {
             /////////////////////
             modalCloseMac();
             /////////////////////
+            unfixedModalFixedEl();
         }, 300);
     }else if ( $("body").hasClass("mob-nav-open") ){
         $("body").removeClass("modal-open");
