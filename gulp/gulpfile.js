@@ -67,7 +67,8 @@ gulp.task('styles', function () {
 gulp.task('libscss', function () {
     return gulp.src([
         'src/test/*.css',
-        // "node_modules/swiper/css/swiper.min.css",
+        // "node_modules/swiper/css/swiper.min.css",//old version
+        // "node_modules/swiper/swiper-bundle.css",
         // "node_modules/flickity/dist/flickity.css",
         // "node_modules/flickity-fade/flickity-fade.css",
         // "node_modules/slick-carousel/slick/slick.css",
@@ -102,7 +103,8 @@ gulp.task("libsjs", function () {
         "node_modules/what-input/dist/what-input.js",//what-input
         // "node_modules/intersection-observer/intersection-observer.js",//npm install intersection-observer for IE => observer.POLL_INTERVAL = 100;
 
-        // "node_modules/swiper/js/swiper.min.js",//npm install swiper
+        // "node_modules/swiper/js/swiper.min.js",//old version
+        // "node_modules/swiper/swiper-bundle.js",//npm install swiper
         // "node_modules/slick-carousel/slick/slick.js",
         // "node_modules/flickity/dist/flickity.pkgd.min.js",//npm install flickity
         // "node_modules/flickity-fade/flickity-fade.js",//npm install flickity-fade
