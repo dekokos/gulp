@@ -215,6 +215,7 @@ class NoScroll {
             });
         }
         this.html.scrollTop = this.scrollTop;
+        this.body.scrollTop = this.scrollTop;//fix for ios 12
         this.scrollTop = 0;
     }
 }
