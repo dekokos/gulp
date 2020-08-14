@@ -138,24 +138,38 @@ function modalCloseMac() {
 
 class NoScroll {
     constructor(fixedElements) {
+        this.fixForIOS12 = true;
+        this.gsapScrollTrigger = typeof ScrollTrigger !== undefined;
+
         this.html = document.querySelector('html');
         this.body = document.body;
         this.scrollTop = 0;
         this.scrollWidth = this.getScrollWidth();
         this.fixedElements = document.querySelectorAll(fixedElements);
 
+        console.log(this.gsapScrollTrigger);
+
         this.createCss();
     }
     createCss() {
-        this.css = `
+        if (this.fixForIOS12) {
+            //position: fixed; для запрета скрола при открытии модалок в ios 12 и ниже
+            this.css = `
+                .noScroll {
+                    position: fixed;
+                    overflow: hidden;
+                }
+            `;
+        } else {
+            this.css = `
             .noScroll {
-                position: fixed;
                 overflow: hidden;
             }
         `;
+        }
+
         this.head = document.head || document.getElementsByTagName('head')[0];
         this.style = document.createElement('style');
-        // this.body.prepend(this.style);//not support IE
         this.body.insertBefore(this.style, this.body.childNodes[0]);
         this.style.appendChild(document.createTextNode(this.css));
     }
@@ -180,6 +194,11 @@ class NoScroll {
         return widthNoScroll - widthWithScroll;
     }
     disableScroll() {
+
+        if (this.fixForIOS12 && this.gsapScrollTrigger) {
+            ScrollTrigger.getAll().forEach(st => st.disable());
+        }
+
         this.scrollTop = this.html.scrollTop ? this.html.scrollTop : this.body.scrollTop;
         this.scrollWidth = this.getScrollWidth();
 
@@ -217,6 +236,10 @@ class NoScroll {
         this.html.scrollTop = this.scrollTop;
         this.body.scrollTop = this.scrollTop;//fix for ios 12
         this.scrollTop = 0;
+
+        if (this.fixForIOS12 && this.gsapScrollTrigger) {
+            ScrollTrigger.getAll().forEach(st => st.enable());
+        }
     }
 }
 const noScroll = new NoScroll();

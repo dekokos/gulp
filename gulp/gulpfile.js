@@ -136,6 +136,7 @@ gulp.task("libsjs", function () {
         //******* gsap plugins START *******
         // "node_modules/gsap/dist/gsap.js",//gsap
         // "src/libs/CustomEase.js",
+        // "node_modules/gsap/dist/ScrollTrigger.js",
         // "node_modules/gsap/dist/CSSRulePlugin.js",
         // "node_modules/gsap/dist/Draggable.js",
         // "node_modules/gsap/dist/EaselPlugin.js",
