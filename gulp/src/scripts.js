@@ -147,7 +147,6 @@ class NoScroll {
         this.scrollWidth = this.getScrollWidth();
         this.fixedElements = document.querySelectorAll(fixedElements);
 
-        console.log(this.gsapScrollTrigger);
 
         this.createCss();
     }
