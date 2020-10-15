@@ -1,0 +1,21 @@
+extends ../pug/layout.pug
+
+block meta
+    title Главная
+    meta(name='description', content='')
+
+//-block append head
+   link(rel='stylesheet', href='css/some.css')
+
+//-block header
+
+block content
+    .container
+        h1 Заголовок контента
+        svg(width="13" height="10")
+            use(xlink:href="img/sprite.svg#check")
+
+//-block footer
+
+//- block append page-bottom
+//-   script(src='js/some.js')

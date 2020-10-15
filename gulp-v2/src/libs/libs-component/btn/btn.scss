@@ -1,0 +1,40 @@
+.btn {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid cornflowerblue;
+  border-radius: 10px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 18px;
+  text-transform: uppercase;
+  color: #fff;
+  background-color: cornflowerblue;
+  z-index: 1;
+  transition: .25s linear;
+  transition-property: color, background-color, border-color;
+  &__inner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  &:hover {
+    background-color: #fff;
+    color: cornflowerblue;
+  }
+  &--secondary {
+    color: cornflowerblue;
+    background-color: transparent;
+    &:hover {
+      color: #fff;
+      background-color: cornflowerblue;
+    }
+  }
+}

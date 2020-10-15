@@ -1,0 +1,48 @@
+{
+  "name": "start-template",
+  "version": "2.0.0",
+  "description": "Startkit",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "what-input": "^5.2.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "autoprefixer": "^10.0.1",
+    "babel-loader": "^8.1.0",
+    "browser-sync": "^2.26.5",
+    "cross-env": "^7.0.2",
+    "del": "^4.1.1",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0-beta.2",
+    "gulp-cssnano": "^2.1.3",
+    "gulp-debug": "^4.0.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^9.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.0.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-svg-sprites": "^4.1.2",
+    "gulp-svgmin": "^3.0.0",
+    "gulp-svgstore": "^7.0.1",
+    "postcss": "^8.1.1",
+    "postcss-import": "^12.0.1",
+    "svg4everybody": "^2.1.9",
+    "webpack": "^5.0.0",
+    "webpack-stream": "^6.1.0"
+  },
+  "scripts": {
+    "build": "cross-env NODE_ENV=production gulp build",
+    "start": "gulp"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "author": "DeKo-Tsunami",
+  "license": "ISC"
+}

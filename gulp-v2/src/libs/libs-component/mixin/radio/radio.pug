@@ -1,0 +1,9 @@
+mixin radio(name, text, checked, disabled, cl)
+    .default-radio(class=cl)
+        label.default-radio__label
+            if disabled
+                input(type="radio" name=name checked=checked disabled hidden)
+            else
+                input(type="radio" name=name checked=checked)
+                span(tabindex='0').default-radio__custom
+            span.default-radio__text!=text

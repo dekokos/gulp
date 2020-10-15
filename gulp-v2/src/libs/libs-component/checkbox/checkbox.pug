@@ -1,0 +1,22 @@
+mixin checkbox(name, text, ch, cl, outerText, disabled)
+    .default-checkbox(class=cl)&attributes(attributes)
+        if !outerText
+            label.default-checkbox__label
+                if disabled
+                    input(type="checkbox" name=name checked=ch disabled hidden)
+                else
+                    input(type="checkbox" name=name checked=ch hidden)
+                span(tabindex='0').default-checkbox__custom
+                    svg(width="13" height="10"): use(xlink:href="#icon-check")
+                span.default-checkbox__text!=text
+        else
+            label.default-checkbox__label
+                if disabled
+                    input(type="checkbox" name=name checked=ch disabled hidden)
+                else
+                    input(type="checkbox" name=name checked=ch hidden)
+                span(tabindex='0').default-checkbox__custom
+                    svg(width="13" height="10"): use(xlink:href="#icon-check")
+                span.default-checkbox__text!=text
+            !=outerText
+//- +checkbox('agree', 'Запомнить меня', true)
