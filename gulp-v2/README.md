@@ -74,7 +74,7 @@ demo-block/        # Папка блока.
 
 ### `src/components`
 
-**!!!Все `pug`-файлы - миксины!!!**
+<p class="alert alert--warning">**!!!Все `pug`-файлы - миксины!!!**</p>
 Все `pug`-файлы из этой папки подключаются в шапку pug-шаблона каждой страницы, а значит все `pug`-файлы - миксины. Если добавить сюда `pug` с обычной версткой, то на странице она появится в самом верху, что будет ошибкой.
 
 Здесь лежат кнопки, чекбоксы, хлебные крошки, селектменю, модалки и т.д.
@@ -151,15 +151,17 @@ modal/        # Папка блока
 
 ## Картинки и генерация svg-спрайта
 
-в `src/img/sprite-svg/` добавляем svg-картинки, которые добавляются в `src/img/sprite.svg`.
+Из файлов `src/img/sprite-svg/` генерируется файл спрайта `src/img/sprite.svg`.
 
 Всё содержимое папки `src/img/`, за исключением папки `src/img/sprite-svg/`(см. `config.js#addAssets`), переносятся в `dist/img/`.
 
-Для подключения svg из спрайта пишем:
-```bash
-svg(width="13" height="10")
-    use(xlink:href="img/sprite.svg#check")
-```
+Для вставки на страницу используйте <code>svg &gt; use</code> со ссылками на <code>id</code> символа:
+
+<pre class="code">
+<code>svg(width="32", height="32")</code>
+<code>  use(xlink:href="img/sprite.svg#check")</code>
+</pre>
+
 В данном случае `#check` - имя нашей svg-картинки из svg-спрайта, которую мы добавляли в `src/img/sprite-svg/check.svg`.
 
 в `src/img/icons/` - папка для иконок(не идут в svg-спрайт)
