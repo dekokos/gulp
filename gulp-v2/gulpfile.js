@@ -40,11 +40,16 @@ let postCssPlugins = [
 ];
 
 function generateSvgSprite(cb) {
-    let spriteSvgPath = `${dir.src}img/sprite-svg/svg/`;
+    let spriteSvgPath = `${dir.src}img/sprite-svg/`;
     if(fileExist(spriteSvgPath)) {
         return src(spriteSvgPath + '*.svg')
             .pipe(svgmin(function () {
-                return { plugins: [{ cleanupIDs: { minify: true } }] }
+                return {
+                    plugins: [
+                        { cleanupIDs: { minify: true } },
+                        { removeAttrs: { attrs: 'fill' } }
+                        ]
+                }
             }))
             .pipe(svgstore({ inlineSvg: true }))
             .pipe(rename('sprite.svg'))
@@ -365,7 +370,7 @@ function serve() {
     * Images
     */
     // Спрайт SVG
-    watch([`${dir.src}img/sprite-svg/svg/*.svg`], { events: ['all'], delay: 100 }, series(
+    watch([`${dir.src}img/sprite-svg/*.svg`], { events: ['all'], delay: 100 }, series(
         generateSvgSprite,
         copyImg,
         reload,
