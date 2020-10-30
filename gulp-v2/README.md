@@ -149,6 +149,20 @@ modal/        # Папка блока
 
 Каждый блок (в `src/blocks/` или в `src/components/`) может содержать одноимённый js-файл.
 
+## Картинки и генерация svg-спрайта
+
+в `src/img/sprite-svg/` добавляем svg-картинки, которые добавляются в `src/img/sprite.svg`.
+
+Всё содержимое папки `src/img/`, за исключением папки `src/img/sprite-svg/`(см. `config.js#addAssets`), переносятся в `dist/img/`.
+
+Для подключения svg из спрайта пишем:
+```bash
+svg(width="13" height="10")
+    use(xlink:href="img/sprite.svg#check")
+```
+В данном случае `#check` - имя нашей svg-картинки из svg-спрайта, которую мы добавляли в `src/img/sprite-svg/check.svg`.
+
+в `src/img/icons/` - папка для иконок(не идут в svg-спрайт)
 
 ## Удобное создание нового блока
 
