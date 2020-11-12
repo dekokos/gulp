@@ -2,9 +2,11 @@ dist/
 !dist/readme.md
 design/
 
+#generated automatically START
 src/pug/mixins.pug
 src/js/entry.js
 src/scss/style.scss
+#generated automatically END
 
 __MACOSX
 .Saved/

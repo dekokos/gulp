@@ -242,3 +242,11 @@ class NoScroll {
     }
 }
 export const noScroll = new NoScroll();
+
+
+function setCSSVarVH() {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+}
+setCSSVarVH();
+window.addEventListener('resize', debounce(setCSSVarVH, 160));
