@@ -230,7 +230,12 @@ function buildJs() {
     return src(`./${dir.src}js/entry.js`)
         .pipe(plumber())
         .pipe(webpackStream({
-            mode: 'production',
+            mode: !isProd?'development':'production',
+            performance: {
+                // hints: false,
+                maxAssetSize: 1000000,
+                maxEntrypointSize: 1000000,
+            },
             entry: entryList,
             output: {
                 // filename: '[name].js',
