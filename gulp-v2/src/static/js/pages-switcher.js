@@ -3,18 +3,6 @@ document.addEventListener('DOMContentLoaded',()=> {
 	// Страницы и ссылки на них
 	var pagesList = {
 		"1.Главная": "index.html",
-		"2.ТРЦ Акции список": "trc-stocks-list.html",
-		"3.ТРЦ Акции новость": "trc-stocks-news.html",
-		"4.ТРЦ Акции событие": "trc-stocks-event.html",
-		"5.ТРЦ Акции акция": "trc-stocks-stock.html",
-		"6.ТРЦ Магазины магазин есть фото": "trc-shop-photo.html",
-		"7.ТРЦ Магазины магазин есть фото слайдер": "trc-shop-photo-slider.html",
-		"8.ТРЦ Магазины магазин нет фото": "trc-shop-photo-nophoto.html",
-		"9.ТРЦ Еда Ресторан": "trc-food-restaurant.html",
-		"10.ТРЦ Сервисы и услуги Услуга": "trc-services-service.html",
-		"11.ТРЦ Развлечения Развлечение": "trc-entertainments-entertainment.html",
-		"12.ТРЦ Кинотеатр Фильм": "trc-cinema-film.html",
-		"3.1.ТРЦ Магазины": "trc-shops.html",
 	};
 
 	$('body').each(function(){
