@@ -47,7 +47,7 @@ function generateSvgSprite(cb) {
                 return {
                     plugins: [
                         { cleanupIDs: { minify: true } },
-                        { removeAttrs: { attrs: 'fill' } }
+                        { removeAttrs: { attrs: '(fill|stroke)' } }
                         ]
                 }
             }))
