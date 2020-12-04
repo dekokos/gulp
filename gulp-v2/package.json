@@ -12,6 +12,7 @@
     "autoprefixer": "^10.0.1",
     "babel-loader": "^8.1.0",
     "browser-sync": "^2.26.5",
+    "cheerio": "^1.0.0-rc.3",
     "cross-env": "^7.0.2",
     "del": "^4.1.1",
     "gulp": "^4.0.2",

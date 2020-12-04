@@ -1,3 +1,6 @@
+// import $ from 'jquery';
+// window.jQuery = $;
+// window.$ = $;
 export const mac = navigator.platform.match(/(Mac|iPhone|iPod|iPad)/i) ? true : false;
 export const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 isSafari && document.documentElement.classList.add('is-safari');
