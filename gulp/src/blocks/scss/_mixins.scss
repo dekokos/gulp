@@ -18,7 +18,7 @@
 //@include heightVH(100, 'min');
 //@include heightVH(80, 'max');
 //@include heightVH(100);
-@mixin heightVH($val: 100, $pre: '', $calc: calc(x - 20px)) {
+@mixin heightVH($val: 100, $pre: '') {
 	$vh: calc(var(--vh, 1vh) * #{$val});
 	@if $pre != '' {
 		#{$pre}-height: $val+vh;
