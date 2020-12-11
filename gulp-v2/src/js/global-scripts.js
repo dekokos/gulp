@@ -142,7 +142,7 @@ export function modalCloseMac() {
 class NoScroll {
     constructor(fixedElements) {
         this.fixForIOS12 = true;
-        this.gsapScrollTrigger = typeof ScrollTrigger !== undefined;
+        this.gsapScrollTrigger = typeof ScrollTrigger !== 'undefined';
 
         this.html = document.querySelector('html');
         this.body = document.body;
