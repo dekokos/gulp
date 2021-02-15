@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded',() => {
+document.addEventListener('DOMContentLoaded',function () {
 	let currentPage = (window.location.pathname).replace('/','');
 	// Страницы и ссылки на них
 	let pagesList = {
@@ -161,6 +161,9 @@ document.addEventListener('DOMContentLoaded',() => {
 		document.querySelector('.pages-switcher').classList.toggle('pages-visible');
 	});
 	let pageSwitcherList = document.querySelectorAll('.pages-switcher .pages-swticher-list a');
+	if (window.NodeList && !NodeList.prototype.forEach) { // IE fix forEach
+		NodeList.prototype.forEach = Array.prototype.forEach;
+	}
 	pageSwitcherList && pageSwitcherList.forEach(function(el) {
 		if ( el.getAttribute('href') === currentPage ) {
 			el.parentElement.classList.add('is-active');
