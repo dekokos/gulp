@@ -1,23 +1,24 @@
 /* eslint-disable */
 'use strict';
 
-// Генератор файлов блока
+// Генератор файлов блока или компонента
 
-// Использование: node create.js [имя блока] [доп. расширения через пробел]
+// Использование: node create.js [имя блока] [доп. расширения через пробел] [ключ]
+// ключ --c сгенерирует компонент
 
 const fs = require('fs');
 const projectConfig = require('./config.js');
 
 const dir = projectConfig.dir;
 const mkdirp = require('mkdirp');
-
+const isComponent = process.argv.indexOf('--c') !== -1;
 const blockName = process.argv[2];
-const defaultExtensions = ['scss','pug','js']; // расширения по умолчанию
+const defaultExtensions = !isComponent ? ['scss','pug','js'] : ['scss','pug']; // расширения по умолчанию
 const extensions = uniqueArray(defaultExtensions.concat(process.argv.slice(3)));
 
 // Если есть имя блока
 if (blockName) {
-    const dirPath = `${dir.blocks}${blockName}/`; // полный путь к создаваемой папке блока
+    const dirPath = `${!isComponent ? dir.blocks : dir.comp}${blockName}/`; // полный путь к создаваемой папке блока
 
     const made = mkdirp.sync(dirPath);
     console.log(`----- Создание папки: ${made}`);
@@ -27,6 +28,8 @@ if (blockName) {
         const filePath = `${dirPath + blockName}.${extension}`; // полный путь к создаваемому файлу
         let fileContent = '';                                   // будущий контент файла
         let fileCreateMsg = '';                                 // будущее сообщение в консоли при создании файла
+
+        if (extension.match('--')) return;
 
         if (extension === 'scss') {
 
