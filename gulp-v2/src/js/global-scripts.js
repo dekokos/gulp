@@ -150,6 +150,7 @@ class NoScroll {
         this.scrollWidth = this.getScrollWidth();
         this.fixedElements = document.querySelectorAll(fixedElements);
 
+        this.isScrollOffFlag = false;
 
         this.createCss();
     }
@@ -195,6 +196,11 @@ class NoScroll {
         outer.parentNode.removeChild(outer);
         return widthNoScroll - widthWithScroll;
     }
+
+    isScrollOff() {
+        return this.isScrollOffFlag;
+    }
+
     disableScroll() {
 
         if (this.fixForIOS12 && this.gsapScrollTrigger) {
@@ -208,6 +214,7 @@ class NoScroll {
         this.html.style.top = -this.scrollTop+'px';
         this.html.style.marginRight = this.scrollWidth+'px';
         this.html.style.width = 'calc(100% - '+this.scrollWidth+'px';
+        this.isScrollOffFlag = true;
 
 
         if (this.fixedElements[0]) {
@@ -238,6 +245,7 @@ class NoScroll {
         this.html.scrollTop = this.scrollTop;
         this.body.scrollTop = this.scrollTop;//fix for ios 12
         this.scrollTop = 0;
+        this.isScrollOffFlag = false;
 
         if (this.fixForIOS12 && this.gsapScrollTrigger) {
             ScrollTrigger.getAll().forEach(st => st.enable());
