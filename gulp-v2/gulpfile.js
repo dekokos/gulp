@@ -7,7 +7,9 @@ const fs = require('fs');
 const svgmin = require('gulp-svgmin');
 const svgstore = require('gulp-svgstore');
 const debug = require('gulp-debug');
+const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
+const TerserPlugin = require('terser-webpack-plugin');
 const postcss = require('gulp-postcss');
 const atImport = require("postcss-import");
 const autoprefixer = require("autoprefixer");
@@ -247,17 +249,32 @@ function buildJs() {
                     {
                         test: /\.(js)$/,
                         exclude: /(node_modules)/,
-                        loader: 'babel-loader',
-                        query: {
-                            presets: ['@babel/preset-env']
+                        use: {
+                            loader: 'babel-loader',
+                            options: {
+                                presets: ['@babel/preset-env']
+                            }
                         }
                     }
                 ]
             },
+            optimization: {
+                minimize: isProd,
+                minimizer: [
+                    new TerserPlugin({
+                        terserOptions: {
+                            format: {
+                                comments: false,
+                            },
+                        },
+                        extractComments: false,
+                    }),
+                ],
+            },
             // externals: {
             //   jquery: 'jQuery'
             // }
-        }))
+        },webpack))
         .pipe(dest(`${dir.build}js`));
 }
 exports.buildJs = buildJs;
