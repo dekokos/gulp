@@ -44,14 +44,12 @@ function openModal(newModal, nextBool) { // nextBool - boolean
                 modal.classList.add('i-modal--3deep');
             } else { // модалка с 3-й глубиной
                 modal.classList.add('i-modal--2deep');
-                console.log('2deep');
             }
         } else { // дефолтное поведение, если нет next-модалки
             document.body.classList.add('modal-open');
             noScroll.disableScroll();
         }
         modal.classList.add('is-active');
-        console.log('is-active')
         let isIE = /*@cc_on!@*/ false || !!document.documentMode;
         if (isIE === true) {
             if (modal.querySelector('.i-modal__content').offsetHeight > window.innerHeight) {
