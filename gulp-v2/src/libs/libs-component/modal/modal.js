@@ -1,103 +1,110 @@
-$(function() {
-    $(document).on('click', '[data-modal]',function(e) {
-        e.preventDefault();
-        var newModal = $(this).data("modal");
-        if ( $(".default-modal.is-active").length ) {
-            callbackClose();
-            setTimeout(function() {
-                showModal(newModal);
-            }, 300);
-        }else{
-            showModal(newModal);
-        }
-    });
-    $(document).on('click', '.default-modal__close, [data-modal-close]', function() {
-        callbackClose();
-    });
-    $("html").on('click', function(e) {
-        if (!$(e.target).closest(".default-modal__content").length && $(".default-modal").hasClass("is-active")) {
-            callbackClose();
+const MODAL_ANIMATION_SPEED = 300;
+
+import { noScroll } from "../../js/global-scripts";
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    document.addEventListener('click', function (e) {
+        let self = e.target;
+        if (self.closest('[data-modal]')) { // клик по кнопке для вызова модалки
+            e.preventDefault();
+            let newModal = self.closest('[data-modal]').dataset.modal;
+            if (document.querySelector('.i-modal.is-active')) {
+                closeModal();
+                setTimeout(() => openModal(newModal), MODAL_ANIMATION_SPEED);
+            } else {
+                openModal(newModal);
+            }
+        } else if (self.closest('[data-modal-next]')) { // клик по кнопке для вызова новой модалки(поверх предыдущей, не закрывая её)
+            e.preventDefault();
+            let newModal = self.closest('[data-modal-next]').dataset.modalNext;
+            openModal(newModal, true);
+        } else if (self.closest('[data-modal-close]')) { // клик по кнопке для закрытия модалки
+            closeModal();
+        } else if (self.classList.contains('i-modal', 'is-active')) { // клик по внешней области модалки(оверлею), чтобы закрыть её
+            closeModal();
         }
     });
     document.addEventListener('keydown', function (e) {
-        if(e.key==="Escape"||e.key==='Esc'||e.keyCode===27) {
-            callbackClose();
+        if (e.key === "Escape" || e.key === 'Esc' || e.keyCode === 27) {
+            closeModal();
         }
     });
 
 });
-let modalFixedEl = $('[data-modal-fixed]');
-function fixedModalFixedEl() {
-    modalFixedEl.each(function (i, el) {
-        let media = el.dataset.modalFixed;
-        if (media && window.innerWidth <= media) return;
-        let rect = el.getBoundingClientRect();
-        $(el).css({
-            position: 'fixed',
-            right: 'auto',
-            left: rect.left,
-            top: rect.top,
-            width: rect.width
-        })
-    });
-}
-function unfixedModalFixedEl() {
-    modalFixedEl.each(function (i, el) {
-        let media = el.dataset.modalFixed;
-        if (media && window.innerWidth <= media) return;
-        $(el).css({
-            position: '',
-            right: '',
-            left: '',
-            top: '',
-            width: ''
-        })
-    });
-}
-function showModal(e) {
-    fixedModalFixedEl();
-    setTimeout(function() {
-        $("body").addClass("modal-open");
-        var modal = $("." + e + "");
-
-        ///////////////////
-        modalOpenMac();
-        ///////////////////
-        if (hasScrollbar()) {
-            var scrollWidth = getScrollbarWidth();
-            $("html").css({
-                "margin-right": scrollWidth
-            });
-            modal.addClass("is-active");
-        } else {
-            modal.addClass("is-active");
+// openModal('modal-first') - обычный вызов модального окна (аналог data-modal)
+// openModal('modal-second',true) - вызов нового модального окна поверх прежнего (аналог data-modal-next)
+function openModal(newModal, nextBool) { // nextBool - boolean
+    if (!newModal) return;
+    let modal = document.querySelector('.' + newModal + '');
+    if (!modal) return;
+    setTimeout(() => {
+        if (nextBool) { // если есть next-modal
+            if (document.querySelector('.i-modal.i-modal--2deep')) { // модалка со 2-й глубиной
+                modal.classList.add('i-modal--3deep');
+            } else { // модалка с 3-й глубиной
+                modal.classList.add('i-modal--2deep');
+                console.log('2deep');
+            }
+        } else { // дефолтное поведение, если нет next-модалки
+            document.body.classList.add('modal-open');
+            noScroll.disableScroll();
         }
-        $('html').addClass('no-scroll');
-
-        var isIE = /*@cc_on!@*/false || !!document.documentMode;
+        modal.classList.add('is-active');
+        console.log('is-active')
+        let isIE = /*@cc_on!@*/ false || !!document.documentMode;
         if (isIE === true) {
-            if ( modal.find(".default-modal__content").outerHeight() > $(window).height() ) {
-                modal.css("display", "block");
-            }else {
-                modal.removeAttr("style");
+            if (modal.querySelector('.i-modal__content').offsetHeight > window.innerHeight) {
+                modal.style.display = 'block';
+            } else {
+                modal.style.display = '';
             }
         }
     }, 0);
 }
-function callbackClose() {
-    if ($("body").hasClass("modal-open") && !$("body").hasClass("mob-nav-open")) {
-        $("body").removeClass("modal-open");
-        $(".default-modal").removeClass("is-active");
-        setTimeout(function () {
-            $('html').removeClass('no-scroll');
-            $('html').css('margin-right', '');
-            /////////////////////
-            modalCloseMac();
-            /////////////////////
-            unfixedModalFixedEl();
-        }, 300);
-    }else if ( $("body").hasClass("mob-nav-open") ){
-        $("body").removeClass("modal-open");
-        $(".default-modal").removeClass("is-active");
+// closeModal() - закрывает текущее модальное окно
+// closeModal(true) - закрывает все модальные окна
+function closeModal(closeall) { //closeall - boolean
+    if (document.body.classList.contains('modal-open') &&
+        !document.body.classList.contains('mob-nav-open')) {
+        if (!closeall) { // закрыть глубинную модалку
+            if (document.querySelector('.i-modal--3deep')) { // если есть 3-я глубинная модалка
+                let modal = document.querySelector('.i-modal--3deep');
+                modal.classList.remove('is-active');
+                setTimeout(() => modal.classList.remove('i-modal--3deep'), MODAL_ANIMATION_SPEED);
+                return;
+            } else if (document.querySelector('.i-modal--2deep')) { // если есть 2-я глубинная модалка
+                let modal = document.querySelector('.i-modal--2deep');
+                modal.classList.remove('is-active');
+                setTimeout(() => modal.classList.remove('i-modal--2deep'), MODAL_ANIMATION_SPEED);
+                return;
+            }
+        }
+        document.body.classList.remove('modal-open');
+        document.querySelectorAll('.i-modal.is-active').forEach(function (el) {
+            el.classList.remove('is-active', 'i-modal--2deep', 'i-modal--3deep');
+            resetTabWithMap(el);
+        });
+        if (!$('.header').hasClass('is-active')) {
+            setTimeout(() => {
+                noScroll.enableScroll();
+            }, MODAL_ANIMATION_SPEED);
+        }
+    } else if (document.body.classList.contains('mob-nav-open')) {
+        document.body.classList.remove('modal-open');
+        document.querySelectorAll('.i-modal.is-active').forEach(function (el) {
+            el.classList.remove('is-active');
+            resetTabWithMap(el);
+        });
     }
 }
+
+function resetTabWithMap(modal) {
+    if (modal.classList.contains('modal-land-area')) {
+        modal.querySelector('[data-tabnav-id="placement"]')?.dispatchEvent(new Event('click', {bubbles: true}))
+    }
+}
+
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.MODAL_ANIMATION_SPEED = MODAL_ANIMATION_SPEED;
