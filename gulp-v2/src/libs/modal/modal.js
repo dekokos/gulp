@@ -1,7 +1,5 @@
 const MODAL_ANIMATION_SPEED = 300;
 
-import { noScroll } from "../../js/global-scripts";
-
 document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', function (e) {
@@ -81,25 +79,15 @@ function closeModal(closeall) { //closeall - boolean
         document.body.classList.remove('modal-open');
         document.querySelectorAll('.i-modal.is-active').forEach(function (el) {
             el.classList.remove('is-active', 'i-modal--2deep', 'i-modal--3deep');
-            resetTabWithMap(el);
         });
-        if (!$('.header').hasClass('is-active')) {
-            setTimeout(() => {
-                noScroll.enableScroll();
-            }, MODAL_ANIMATION_SPEED);
-        }
+        setTimeout(() => {
+            noScroll.enableScroll();
+        }, MODAL_ANIMATION_SPEED);
     } else if (document.body.classList.contains('mob-nav-open')) {
         document.body.classList.remove('modal-open');
         document.querySelectorAll('.i-modal.is-active').forEach(function (el) {
             el.classList.remove('is-active');
-            resetTabWithMap(el);
         });
-    }
-}
-
-function resetTabWithMap(modal) {
-    if (modal.classList.contains('modal-land-area')) {
-        modal.querySelector('[data-tabnav-id="placement"]')?.dispatchEvent(new Event('click', {bubbles: true}))
     }
 }
 

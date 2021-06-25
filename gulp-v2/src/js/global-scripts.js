@@ -1,9 +1,6 @@
 // import $ from 'jquery';
 // window.jQuery = $;
 // window.$ = $;
-export const mac = navigator.platform.match(/(Mac|iPhone|iPod|iPad)/i) ? true : false;
-export const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-isSafari && document.documentElement.classList.add('is-safari');
 
 //pureJS polyfills IE
 (function() {
@@ -30,26 +27,6 @@ isSafari && document.documentElement.classList.add('is-safari');
 
 })();
 
-export const isMobile = {
-    Android: function() {
-        return navigator.userAgent.match(/Android/i);
-    },
-    BlackBerry: function() {
-        return navigator.userAgent.match(/BlackBerry/i);
-    },
-    iOS: function() {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    Opera: function() {
-        return navigator.userAgent.match(/Opera Mini/i);
-    },
-    Windows: function() {
-        return navigator.userAgent.match(/IEMobile/i);
-    },
-    any: function() {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    }
-};
 export function debounce(func, wait, immediate) {
     var timeout;
     return function () {
@@ -63,80 +40,6 @@ export function debounce(func, wait, immediate) {
         timeout = setTimeout(later, wait);
         if (callNow) func.apply(context, args);
     };
-}
-
-export function getScrollbarWidth() {
-    var outer = document.createElement("div");
-    outer.style.visibility = "hidden";
-    outer.style.width = "100px";
-    outer.style.msOverflowStyle = "scrollbar";
-
-    document.body.appendChild(outer);
-
-    var widthNoScroll = outer.offsetWidth;
-    // force scrollbars
-    outer.style.overflow = "scroll";
-
-    // add innerdiv
-    var inner = document.createElement("div");
-    inner.style.width = "100%";
-    outer.appendChild(inner);
-
-    var widthWithScroll = inner.offsetWidth;
-
-    // remove divs
-    outer.parentNode.removeChild(outer);
-    return widthNoScroll - widthWithScroll;
-}
-
-// проверка на боковой скролл
-export function hasScrollbar() {
-    return $(document).height() > $(window).height();
-}
-
-export function number_format(number, decimals, dec_point, thousands_sep) {
-    number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
-    var n = !isFinite(+number) ? 0 : +number,
-        prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
-        sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
-        dec = (typeof dec_point === 'undefined') ? '.' : dec_point,
-        s = '',
-        toFixedFix = function (n, prec) {
-            var k = Math.pow(10, prec);
-            return '' + (Math.round(n * k) / k)
-                .toFixed(prec);
-        };
-    // Fix for IE parseFloat(0.55).toFixed(0) = 0;
-    s = (prec ? toFixedFix(n, prec) : '' + Math.round(n))
-        .split('.');
-    if (s[0].length > 3) {
-        s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
-    }
-    if ((s[1] || '')
-        .length < prec) {
-        s[1] = s[1] || '';
-        s[1] += new Array(prec - s[1].length + 1)
-            .join('0');
-    }
-    return s.join(dec);
-}
-
-export function modalOpenMac() {
-    if ( mac ) {
-        if ($(document).height() > $(window).height() && !$("html").hasClass("apple-fix")) {
-            var scrollTop = ($('html').scrollTop()) ? $('html').scrollTop() : $('body').scrollTop(); // Works for Chrome, Firefox, IE...
-            $('html').css('top',-scrollTop);
-            document.documentElement.classList.add("apple-fix");
-        }
-    }
-}
-
-export function modalCloseMac() {
-    if (mac) {
-        var scrollTop = parseInt($('html').css('top'));
-        document.documentElement.classList.remove("apple-fix");
-        $('html,body').scrollTop(-scrollTop);
-    }
 }
 
 class NoScroll {
@@ -177,6 +80,7 @@ class NoScroll {
         this.style.appendChild(document.createTextNode(this.css));
     }
     getScrollWidth() {
+        if ( document.body.scrollHeight <= window.innerHeight ) return 0;
         let outer = document.createElement("div");
         outer.style.visibility = "hidden";
         outer.style.width = "100px";
@@ -252,8 +156,30 @@ class NoScroll {
         }
     }
 }
-export const noScroll = new NoScroll();
+const noScroll = new NoScroll();
+// const noScroll = new NoScroll('.header__inner');//'.header__inner, .catalog-video'
+window.noScroll = noScroll;
 
+const PubSub = {
+    channels: {},
+    subscribe(channelName, listener) {
+        if (!this.channels[channelName]) {
+            this.channels[channelName] = []
+        }
+        this.channels[channelName].push(listener)
+    },
+
+    publish(channelName, data) {
+        const channel = this.channels[channelName]
+        if (!channel || !channel.length) {
+            return
+        }
+
+        channel.forEach(listener => listener(data))
+    },
+}
+window.CHANNEL_NAMES = {}
+window.PubSub = PubSub
 
 function setCSSVarVH() {
     let vh = window.innerHeight * 0.01;
@@ -261,3 +187,7 @@ function setCSSVarVH() {
 }
 setCSSVarVH();
 window.addEventListener('resize', debounce(setCSSVarVH, 160));
+
+[...document.querySelectorAll('.is-default-hidden')].forEach(function(el) {
+    el.classList.remove('is-default-hidden');
+});

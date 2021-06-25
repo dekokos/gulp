@@ -35,6 +35,7 @@ let config = {
     'addJsBefore': [
         'what-input/dist/what-input.js',
         '../img/sprite-svg/sprite-svg.js',
+        '../js/global-scripts.js',
         // '../blocks/header/header.js', // относительно папки src/js
         // 'somePackage/dist/somePackage.js', // для 'node_modules/somePackage/dist/somePackage.js',
     ],
