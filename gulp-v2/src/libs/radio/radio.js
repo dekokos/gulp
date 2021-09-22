@@ -1,10 +1,13 @@
-// const $ = require('jquery');
-// $(function () {
-//     $(document).on('keydown.i-radio', '.i-radio__custom', function(event) {
-//         let pb = $(this).closest('.i-radio');
-//         if (event.keyCode === 32 || event.keyCode === 13) {// Space or Enter
-//             pb.find('input').trigger('click');
-//             return false;
-//         }
-//     });
-// });
+document.addEventListener('keydown', radioKeydownHandle)
+
+function radioKeydownHandle(e) {
+    const customRadioEl = e.target.closest('.i-radio__custom')
+
+    if (!customRadioEl) return
+
+    const pb = customRadioEl.closest('.i-radio')
+    if (event.keyCode === 32 || event.keyCode === 13) {// Space or Enter
+        pb?.querySelector('input[type=radio]').click();
+        return false;
+    }
+}
