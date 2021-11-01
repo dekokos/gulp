@@ -16,10 +16,11 @@ end_of_line = lf
 # editorconfig-tools is unable to ignore longs strings or urls
 max_line_length = off
 
-[*.{js, pug}]
-# indent_style = tab
-# tab_width = 4
+[*.{js, pug, py}]
 indent_size = 4
+
+# [*.{json, md}]
+# indent_size = 2
 
 [*.min.*]
 indent_style = ignore
