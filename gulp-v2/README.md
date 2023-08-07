@@ -13,6 +13,7 @@
 Требуются установленный [git](https://git-scm.com/) и [Node.js (LTS)](https://nodejs.org/en/).
 - Установить зависимости проекта: `npm i`
 
+
 ## Команды
 ```bash
 npm start                                # запуск сервера разработки
@@ -141,7 +142,7 @@ modal/        # Папка блока
     - Элементы блока
     - Модификаторы блока
     - Медиаусловия(в конце файла)
-    
+
 ## Скрипты
 
 Точка входа (`src/js/entry.js`) формируется автоматически при старте сервера разработки. Точка входа обрабатывается webpack-ом (с babel-loader).
@@ -171,7 +172,7 @@ modal/        # Папка блока
 
 ```bash
 # формат: node create.js ИМЯБЛОКА [доп. расширения через пробел]
-node create.js demo-block        # создаст папку блока в `src/blocks`, demo-block.pug, demo-block.scss, demo-block.js 
+node create.js demo-block        # создаст папку блока в `src/blocks`, demo-block.pug, demo-block.scss, demo-block.js
 node create.js demo-block php    # создаст папку блока в `src/blocks`, demo-block.pug, demo-block.scss, demo-block.js и demo-block.php
 node create.js demo-block md     # дополнительно создаст внутри блока readme.md
 ```
